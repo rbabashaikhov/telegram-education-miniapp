@@ -1,0 +1,40 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      APP_URL: ${APP_URL:-http://localhost:3000}
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:-}
+      ALLOW_DEMO_MODE: ${ALLOW_DEMO_MODE:-true}
+      DATABASE_PATH: /data/education.db
+      TZ: ${TZ:-Europe/Moscow}
+      DATA_MODE: ${DATA_MODE:-local}
+      CRM_ADAPTER: ${CRM_ADAPTER:-local}
+      EVENT_ADAPTER: ${EVENT_ADAPTER:-local}
+      EVENT_WEBHOOK_URL: ${EVENT_WEBHOOK_URL:-}
+      NOTIFICATION_ADAPTER: ${NOTIFICATION_ADAPTER:-local}
+      PAYMENT_ADAPTER: ${PAYMENT_ADAPTER:-mock}
+      BUSINESS_NAME: "BrightWay Education"
+      APP_TITLE: "BrightWay"
+      APP_DESCRIPTION: "Личный кабинет учебного центра: подбор программы, пробное занятие, абонемент и прогресс."
+      BRAND_ACCENT: "#1F5C4D"
+      FEATURE_DEMO_TOUR: "true"
+      FEATURE_DEMO_ADMIN_PREVIEW: "true"
+      ADMIN_TOKEN: ${ADMIN_TOKEN:-brightway-demo}
+    volumes:
+      - sqlite_data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/api/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+volumes:
+  sqlite_data:
