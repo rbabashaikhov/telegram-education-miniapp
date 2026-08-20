@@ -42,11 +42,13 @@ export function AdminPage({ preview = false }: { preview?: boolean }) {
     <div className="admin-shell">
       <header className="admin-head">
         <div>
-          <p className="eyebrow">{preview ? 'Sales preview' : 'Admin'}</p>
+          <p className="eyebrow">{preview ? 'Кабинет школы · только чтение' : 'Admin'}</p>
           <h1>{business.businessName}</h1>
           <p className="muted">Лёгкая консоль воронки, не полноценная CRM.</p>
         </div>
-        <Link to="/">К Mini App</Link>
+        <Link className="demo-chrome-cta" to="/">
+          Открыть клиентское приложение
+        </Link>
       </header>
 
       {!preview && (

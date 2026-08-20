@@ -34,4 +34,10 @@ describe('sales demo eligibility', () => {
   it('keeps chrome in browser demo', () => {
     expect(canShowSalesDemoChrome({ ...demo, demoAdminPreviewEnabled: true })).toBe(true);
   });
+
+  it('hides chrome on admin paths', () => {
+    expect(
+      canShowSalesDemoChrome({ ...demo, demoAdminPreviewEnabled: true, isAdminPath: true }),
+    ).toBe(false);
+  });
 });

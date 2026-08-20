@@ -26,6 +26,6 @@ export function canShowSalesDemoChrome(input: {
   demoAdminPreviewEnabled: boolean;
   isAdminPath: boolean;
 }): boolean {
-  if (!input.isDemo || input.isTelegram || !input.demoMode) return false;
+  if (!input.isDemo || input.isTelegram || !input.demoMode || input.isAdminPath) return false;
   return input.demoTourEnabled || input.demoAdminPreviewEnabled;
 }

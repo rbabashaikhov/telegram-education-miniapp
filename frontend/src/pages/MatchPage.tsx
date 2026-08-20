@@ -76,6 +76,9 @@ export function MatchPage() {
 
   return (
     <div className="page">
+      <Link className="back-link" to="/">
+        ← Назад
+      </Link>
       <header className="hero">
         <p className="eyebrow">Квалификация</p>
         <h1>Подобрать программу</h1>

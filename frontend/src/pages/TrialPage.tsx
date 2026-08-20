@@ -70,6 +70,9 @@ export function TrialPage() {
 
   return (
     <div className="page">
+      <Link className="back-link" to={programId ? `/programs/${programId}` : '/programs'}>
+        ← Назад
+      </Link>
       <header className="hero">
         <p className="eyebrow">Пробное занятие</p>
         <h1>Выберите слот</h1>

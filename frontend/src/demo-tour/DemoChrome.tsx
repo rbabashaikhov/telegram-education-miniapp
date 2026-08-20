@@ -11,12 +11,17 @@ export function DemoChrome({
 }) {
   return (
     <div className="demo-chrome">
+      <span className="demo-badge">Демо</span>
       {showTour && (
-        <button type="button" onClick={onStartTour}>
-          Демо-тур
+        <button type="button" className="demo-chrome-link" onClick={onStartTour}>
+          Как это работает?
         </button>
       )}
-      {showAdmin && <Link to="/demo/admin">Admin preview</Link>}
+      {showAdmin && (
+        <Link className="demo-chrome-cta" to="/demo/admin">
+          Кабинет школы
+        </Link>
+      )}
     </div>
   );
 }

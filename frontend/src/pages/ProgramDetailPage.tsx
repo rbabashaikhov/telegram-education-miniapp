@@ -27,6 +27,9 @@ export function ProgramDetailPage() {
 
   return (
     <div className="page">
+      <Link className="back-link" to="/programs">
+        ← Назад
+      </Link>
       <header className="hero">
         <p className="eyebrow">{program.level}</p>
         <h1>{program.title}</h1>
